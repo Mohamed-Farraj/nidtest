@@ -1,0 +1,68 @@
+<div
+  class="container-fluid bg-body-secondary p-2 d-flex flex-column justify-content-start align-items-center"
+  style="min-height: 6.2rem"
+>
+  <div class="container my-3 bg-light">
+    <div class="title p-4 border-bottom">
+      قم بادخال الرقم القومي المراد الاستعلام عنه
+    </div>
+    <div class="form border-bottom p-4">
+      <input
+        [(ngModel)]="studentId"
+        class="form-control form-control-lg"
+        type="text"
+        placeholder="**********3030"
+        aria-label=".form-control-lg example"
+        (keydown.enter)="searchInExcel()"
+      />
+      <button (click)="searchInExcel()" type="button" class="btn btn-primary mt-3 px-4">
+        استعلام
+      </button>
+    </div>
+    <div
+      class="result border-bottom p-4 d-flex justify-content-center align-items-center flex-column"
+      style="min-height: 300px"
+    >
+
+    
+<div class="w-100">
+    <div #no class="alert alert-danger text-center w-75" role="alert">
+        هذا الطالب غير مسجل بالنظام
+      </div>
+
+      <div #yes class="alert alert-success text-center w-75" role="alert">
+        تم قبول الطلب برجاء التوجه للكلية لأستكمال الاجراءات
+      </div>
+
+      <div #pending class="alert alert-warning text-center w-75" role="alert">
+        الطلب قيد المراجعة برجاء الانتظار
+      </div>
+</div>
+
+        <!-- @if(userid)
+        {
+            <app-user [id]="userid" [email]="useremail" [name]="username" [img]="userimg"></app-user>
+        }
+        @else
+        {
+            <div class="card" aria-hidden="true">
+                <img src="https://i.pinimg.com/736x/95/2a/ec/952aec2608be574c24cbec2f70d6b32c.jpg" class="card-img-top w-50" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title placeholder-glow">
+                    <span class="placeholder col-6"></span>
+                  </h5>
+                  <p class="card-text placeholder-glow">
+                    <span class="placeholder col-7"></span>
+                    <span class="placeholder col-4"></span>
+                    <span class="placeholder col-4"></span>
+                    <span class="placeholder col-6"></span>
+                    <span class="placeholder col-8"></span>
+                  </p>
+                </div>
+              </div>
+        } -->
+
+      
+    </div>
+  </div>
+</div>
