@@ -5,6 +5,14 @@
   <div class="container my-3 bg-light">
     <div class="title p-4 border-bottom">
       قم بادخال الرقم القومي المراد الاستعلام عنه
+      <p><br>
+        30303030303031 <br>
+        30303030303032 <br>
+        30303030303033 <br>
+        30303030303034 <br>
+        30303030303035 <br>
+        30303030303036 <br>
+      </p>
     </div>
     <div class="form border-bottom p-4">
       <input
@@ -13,9 +21,9 @@
         type="text"
         placeholder="**********3030"
         aria-label=".form-control-lg example"
-        (keydown.enter)="searchInExcel()"
+        (keydown.enter)="searchInExcel(studentId)"
       />
-      <button (click)="searchInExcel()" type="button" class="btn btn-primary mt-3 px-4">
+      <button (click)="searchInExcel(studentId)" type="button" class="btn btn-primary mt-3 px-4">
         استعلام
       </button>
     </div>
@@ -26,14 +34,17 @@
 
     
     <div #no class="alert alert-danger text-center w-75" role="alert">
-        هذا الطالب غير مسجل بالنظام
+      {{studentName}}<br>
+      {{rejectmsg}}
       </div>
 
       <div #yes class="alert alert-success text-center w-75" role="alert">
+        {{studentName}}<br>
         تم قبول الطلب برجاء التوجه للكلية لأستكمال الاجراءات
       </div>
 
       <div #pending class="alert alert-warning text-center w-75" role="alert">
+        {{studentName}}<br>
         الطلب قيد المراجعة برجاء الانتظار
       </div>
 

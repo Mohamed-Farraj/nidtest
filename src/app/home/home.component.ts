@@ -19,6 +19,8 @@ export class HomeComponent {
   @ViewChild('pending') pending!: ElementRef;
 
   studentId: string = "";
+  studentName: string = "";
+  rejectmsg!:string;
   data: any[] = [];
   searchTerm: string = '';
   searchResults: any[] = [];
@@ -80,14 +82,38 @@ export class HomeComponent {
     );
   }
 
-  searchInExcel() {
+  searchInExcel(nid:string) {
 
-    this.searchResults = this.data.filter((row: any) => {
-      return Object.values(row).some(value =>
-        String(value).toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
-    });
+    const index = this.findIndexByNid(nid);
+    if (index !== -1) {
+      console.log(`NID found at index: ${index}`);
+      if(this.data[index][2]==="accepted")
+      {
+        this.studentName = this.data[index][0]
+        this.accepted();
+      }
+      else if(this.data[index][2]==="rejected")
+      {
+        this.rejectmsg = "تم رفض الطلب";
+        this.studentName = this.data[index][0]
+        this.rejected();
+      }
+      else
+      {
+        this.studentName = this.data[index][0]
+        this.pended();        
+      }
+    } else {
+      this.rejectmsg = "هذا الرقم غير مسجل بالنظام";
+      this.studentName = ""
+      this.rejected();
+      console.log('NID not found');
+    }
 
     
+  }
+
+  findIndexByNid(nid: string): number {
+    return this.data.findIndex(row => row[1] === nid);
   }
 }
